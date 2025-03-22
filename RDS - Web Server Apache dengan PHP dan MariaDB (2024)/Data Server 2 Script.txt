@@ -23,6 +23,7 @@ sudo systemctl enable httpd
 # Tambahkan ec2-user ke grup apache
 sudo usermod -a -G apache ec2-user
 exit
+#exit untuk merefresh lalu kembali lagi ke SSH EC2
 
 # Cek grup pengguna
 groups
