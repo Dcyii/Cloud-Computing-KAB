@@ -49,6 +49,6 @@ nano dbinfo.inc
 cd /var/www/html
 nano index1.php
 
-#[link index2.php: klik file index2.php sebelah kiri]
+#[link index.php: klik file index#2.php sebelah kiri]
 ```
 
