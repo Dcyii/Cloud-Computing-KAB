@@ -1,4 +1,4 @@
-<?php include "/var/www/inc/dbinfo.inc"; ?>
+<?php include "/var/www/inc/koneksi.inc"; ?>
 <html>
 <body>
 <h1>Data Server 2</h1>
