@@ -1,4 +1,4 @@
-<?php include "../inc/dbinfo.inc"; ?>
+<?php include "/var/www/inc/dbinfo.inc"; ?>
 <html>
 <body>
 <h1>Data Server 2</h1>
@@ -15,11 +15,12 @@
   VerifyEmployeesTable($connection, DB_DATABASE);
 
   /* If input fields are populated, add a row to the EMPLOYEES table. */
-  $employee_name = htmlentities($_POST['NAME']);
-  $employee_address = htmlentities($_POST['ADDRESS']);
+  $employee_kategori = htmlentities($_POST['KATEGORI']);
+  $employee_judul = htmlentities($_POST['JUDUL']);
+  $employee_editor = htmlentities($_POST['EDITOR']);
 
-  if (strlen($employee_name) || strlen($employee_address)) {
-    AddEmployee($connection, $employee_name, $employee_address);
+  if (strlen($employee_kategori) || strlen($employee_judul) || strlen ($employee_editor)) {
+    AddEmployee($connection, $employee_kategori, $employee_judul, $employee_editor);
   }
 ?>
 
@@ -27,15 +28,19 @@
 <form action="<?PHP echo $_SERVER['SCRIPT_NAME'] ?>" method="POST">
   <table border="0">
     <tr>
-      <td>NAME</td>
-      <td>ADDRESS</td>
+      <td>KATEGORI</td>
+      <td>JUDUL</td>
+      <td>EDITOR</td>
     </tr>
     <tr>
       <td>
-        <input type="text" name="NAME" maxlength="45" size="30" />
+        <input type="text" name="KATEGORI" maxlength="45" size="30" />
       </td>
       <td>
-        <input type="text" name="ADDRESS" maxlength="90" size="60" />
+        <input type="text" name="JUDUL" maxlength="90" size="60" />
+      </td>
+      <td>
+      <input type="text" name="EDITOR" maxlength="45" size="30" />
       </td>
       <td>
         <input type="submit" value="Add Data" />
@@ -48,8 +53,9 @@
 <table border="1" cellpadding="2" cellspacing="2">
   <tr>
     <td>ID</td>
-    <td>NAME</td>
-    <td>ADDRESS</td>
+    <td>KATEGORI</td>
+    <td>JUDUL</td>
+    <td>EDITOR</td>
   </tr>
 
 <?php
@@ -60,7 +66,8 @@ while($query_data = mysqli_fetch_row($result)) {
   echo "<tr>";
   echo "<td>",$query_data[0], "</td>",
        "<td>",$query_data[1], "</td>",
-       "<td>",$query_data[2], "</td>";
+       "<td>",$query_data[2], "</td>",
+       "<td>",$query_data[3], "</td>";
   echo "</tr>";
 }
 ?>
@@ -82,11 +89,12 @@ while($query_data = mysqli_fetch_row($result)) {
 <?php
 
 /* Add an employee to the table. */
-function AddEmployee($connection, $name, $address) {
-   $n = mysqli_real_escape_string($connection, $name);
-   $a = mysqli_real_escape_string($connection, $address);
+function AddEmployee($connection, $kategori, $judul, $editor) {
+   $k = mysqli_real_escape_string($connection, $kategori);
+   $j = mysqli_real_escape_string($connection, $judul);
+   $e = mysqli_real_escape_string($connection, $editor);
 
-   $query = "INSERT INTO EMPLOYEES (NAME, ADDRESS) VALUES ('$n', '$a');";
+   $query = "INSERT INTO EMPLOYEES (KATEGORI, JUDUL, EDITOR) VALUES ('$k', '$j', '$e');";
 
    if(!mysqli_query($connection, $query)) echo("<p>Error adding employee data.</p>");
 }
@@ -97,8 +105,9 @@ function VerifyEmployeesTable($connection, $dbName) {
   {
      $query = "CREATE TABLE EMPLOYEES (
          ID int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-         NAME VARCHAR(45),
-         ADDRESS VARCHAR(90)
+         KATEGORI VARCHAR(45),
+         JUDUL VARCHAR(90),
+         EDITOR VARCHAR(45)
        )";
 
      if(!mysqli_query($connection, $query)) echo("<p>Error creating table.</p>");
@@ -117,5 +126,4 @@ function TableExists($tableName, $connection, $dbName) {
 
   return false;
 }
-?>                        
-                
+?>
