@@ -1,4 +1,4 @@
-'''bash
+```bash
 # SSH ke Instance EC2
 # (Bisa menggunakan CMD yang diarahkan ke "keypair.pem" biasanya di direktori Downloads)
 # (C:\Users\"NamaUser"\Downloads>)
@@ -50,5 +50,5 @@ cd /var/www/html
 nano index1.php 
 
 #[link index1: klik file index1.php sebelah kiri]
-'''
+```
 
