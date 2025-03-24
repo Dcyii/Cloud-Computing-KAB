@@ -43,7 +43,7 @@ mkdir inc
 cd inc
 nano dbinfo.inc
 
-#[link dbinfo.inc: klik file koneksi.php sebelah kiri]
+#[link koneksi.inc: klik file koneksi.php sebelah kiri]
 
 # Buat file aplikasi PHP contoh
 cd /var/www/html
