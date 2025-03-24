@@ -47,8 +47,8 @@ nano koneksi.inc
 
 # Buat file aplikasi PHP contoh
 cd /var/www/html
-nano index1.php
+nano index#2.php
 
-#[link index.php: klik file index#2.php sebelah kiri]
+#[link index#2.php: klik file index#2.php sebelah kiri]
 ```
 
