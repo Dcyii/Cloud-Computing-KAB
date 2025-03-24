@@ -41,9 +41,9 @@ find /var/www -type f -exec sudo chmod 0664 {} \;
 cd /var/www
 mkdir inc
 cd inc
-nano dbinfo.inc
+nano koneksi.inc
 
-#[link koneksi.inc: klik file koneksi.php sebelah kiri]
+#[link koneksi.inc: klik file koneksi.inc sebelah kiri]
 
 # Buat file aplikasi PHP contoh
 cd /var/www/html
