@@ -1,0 +1,7 @@
+#Cek Log Eksekusi User Data:
+
+cat /var/log/cloud-init-output.log
+
+#atau
+
+less /var/log/cloud-init-output.log
